@@ -1,0 +1,19 @@
+{%if team%}
+    <h1>{{team.city}} {{team.name}}</h1>
+
+    {%if athletes_list%}
+        <h2>Players</h2>
+        <ul>
+        {%for athlete in athletes_list%}
+            <li><a href="{% url 'athlete_detail' athlete.id %}">{{athlete.first_name}} {{athlete.last_name}}</a></li>
+        {%endfor%}
+        </ul>
+    {%else%}
+        NO PLAYERS
+    {%endif%}
+
+
+{%else%}
+    NO TEAM
+{%endif%}
+

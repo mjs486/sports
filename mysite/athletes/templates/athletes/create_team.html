@@ -1,0 +1,9 @@
+
+    <h1>New Team</h1>
+    {%if team_form%}
+        <form action="{% url 'create_team'%}" method="post">
+            {% csrf_token %}
+            {{ team_form }}
+            <input type="submit" value="Submit" />
+        </form>
+    {%endif%}
