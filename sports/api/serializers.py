@@ -5,15 +5,33 @@ class AthleteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Athlete
         fields = ('id', 'first_name', 'last_name', 'number', 'team', 'position', 'age', 'headline', 'injury', 'img')
+        depth = 1
+
+class AthleteBasicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Athlete
+        fields = ('id', 'first_name', 'last_name', 'number', 'team', 'position')
+        
 
 class TeamSerializer(serializers.ModelSerializer):
-	athletes= serializers.PrimaryKeyRelatedField(many=True,read_only=True)
+	class Meta:
+		model = Team
+		fields = ('id', 'city', 'name', 'logo', 'league', 'abbr', 'sport')
+
+class TeamAndAthleteSerializer(serializers.ModelSerializer):
+	athletes = AthleteBasicSerializer(many=True)
 	class Meta:
 		model = Team
 		fields = ('id', 'city', 'name', 'logo', 'league', 'abbr', 'sport', 'athletes')
 
-class SportSerializer(serializers.ModelSerializer):
-	teams= serializers.PrimaryKeyRelatedField(many=True,read_only=True)
+
+class SportsTeamsSerializer(serializers.ModelSerializer):
+	teams= TeamSerializer(many=True)
 	class Meta:
 		model = Sport
 		fields = ('sport_id', 'name', 'abbr','teams')
+
+class SportSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Sport
+		fields = ('sport_id', 'name', 'abbr')

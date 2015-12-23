@@ -1,5 +1,5 @@
 from .models import Team, Sport, Athlete
-from .serializers import TeamSerializer, SportSerializer,AthleteSerializer
+from .serializers import TeamSerializer, SportSerializer,AthleteSerializer, SportsTeamsSerializer, TeamAndAthleteSerializer
 from rest_framework import generics, pagination, filters
 
 
@@ -24,7 +24,7 @@ class TeamList(generics.ListCreateAPIView):
 
 class TeamDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Team.objects.all()
-    serializer_class = TeamSerializer
+    serializer_class = TeamAndAthleteSerializer
 
 
 class SportList(generics.ListCreateAPIView):
@@ -34,10 +34,22 @@ class SportList(generics.ListCreateAPIView):
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('sport_id', 'name', 'abbr')
 
+class SportsTeamsList(generics.ListCreateAPIView):
+    queryset = Sport.objects.all()
+    serializer_class = SportsTeamsSerializer
+    pagination_class = StandardResultsSetPagination
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = ('sport_id', 'name', 'abbr')
+
 
 class SportDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Sport.objects.all()
     serializer_class = SportSerializer
+
+class SportsTeamsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Sport.objects.all()
+    serializer_class = SportsTeamsSerializer
+
 
 
 class AthleteList(generics.ListCreateAPIView):
