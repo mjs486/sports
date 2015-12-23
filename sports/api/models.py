@@ -15,7 +15,7 @@ class Team(models.Model):
 	logo = models.URLField(max_length=200)
 	league = models.CharField(max_length=30)
 	abbr = models.CharField(max_length=30)
-	sport = models.ForeignKey(Sport)
+	sport = models.ForeignKey(Sport,related_name='teams')
 	def __str__(self):
 		return '%s %s'%(self.city, self.name)
 
@@ -23,7 +23,7 @@ class Athlete(models.Model):
 	first_name = models.CharField(max_length=30)
 	last_name = models.CharField(max_length=30)
 	number = models.CharField(max_length=10)
-	team = models.ForeignKey(Team)
+	team = models.ForeignKey(Team, related_name='athletes')
 	position = models.CharField(max_length=30)
 	age = models.CharField(max_length=10)
 	headline = models.CharField(max_length=200)
