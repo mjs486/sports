@@ -4,6 +4,7 @@ from api import views
 
 urlpatterns = [
     url(r'^athlete/$', views.AthleteList.as_view()),
+    url(r'^headliners/$', views.HeadlineAthleteList.as_view()),
     url(r'^team/$', views.TeamList.as_view()),
     url(r'^sport/$', views.SportList.as_view()),
     url(r'^athlete/(?P<pk>[0-9]+)/$', views.AthleteDetail.as_view()),

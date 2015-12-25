@@ -2,8 +2,12 @@
 
 // /* Filters */
 
-// angular.module('phonecatFilters', []).filter('checkmark', function() {
-//   return function(input) {
-//     return input ? '\u2713' : '\u2718';
-//   };
-// });
+angular.module('filterFilters', []).filter('startFrom', function() {
+  return function (input, start) {
+		if (input) {
+			start = +start;
+			return input.slice(start);
+		}
+		return [];
+	};
+});

@@ -38,13 +38,13 @@ class Command(BaseCommand):
 						age = player['age']
 					else:
 						age = ''
-					if 'icon' in player:
-						if 'injury' in player['icon']:
-							injury = player['icon']['injury']
+					if 'icons' in player:
+						if 'injury' in player['icons']:
+							injury = player['icons']['injury']
 						else:
 							injury = ''
-						if 'headline' in player['icon']:
-							headline = player['icon']['headline']
+						if 'headline' in player['icons']:
+							headline = player['icons']['headline']
 						else:
 							headline = ''
 					else:

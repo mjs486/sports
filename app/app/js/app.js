@@ -4,14 +4,23 @@
 
 var sportsApp = angular.module('sportsApp', [
   'ngRoute',
+  'ngCookies',
   'sportsControllers',
-  'sportsServices'
+  'sportsServices',
+  'ngResource',
+  'ui.bootstrap',
+  'formly',
+  'formlyBootstrap',
 ]);
 
-sportsApp.config(['$routeProvider',
-  function($routeProvider) {
+sportsApp.config(['$routeProvider','$httpProvider','$resourceProvider',
+  function($routeProvider,$httpProvider,$resourceProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+    $resourceProvider.defaults.stripTrailingSlashes = false;
+
     $routeProvider.
-      when('/sport', {
+      when('/sport/', {
         templateUrl: 'templates/sport-list.html',
         controller: 'SportListCtrl'
       }).
@@ -19,7 +28,7 @@ sportsApp.config(['$routeProvider',
         templateUrl: 'templates/sport-detail.html',
         controller: 'SportDetailCtrl'
       }).
-      when('/team', {
+      when('/team/', {
         templateUrl: 'templates/team-list.html',
         controller: 'TeamListCtrl'
       }).
@@ -27,16 +36,29 @@ sportsApp.config(['$routeProvider',
         templateUrl: 'templates/team-detail.html',
         controller: 'TeamDetailCtrl'
       }).
-      when('/athlete', {
+      when('/athlete/', {
         templateUrl: 'templates/athlete-list.html',
         controller: 'AthleteListCtrl'
       }).
-      when('/athlete/:ahtleteId', {
+      when('/athlete/:athleteId', {
         templateUrl: 'templates/athlete-detail.html',
         controller: 'AthleteDetailCtrl'
       }).
+      when('/home', {
+        templateUrl: 'templates/home.html',
+        controller: 'IndexCtrl'
+      }).
 
       otherwise({
-        redirectTo: '/sport'
+        redirectTo: '/home'
       });
   }]);
+sportsApp.filter('startFrom', function () {
+  return function (input, start) {
+    if (input) {
+      start = +start;
+      return input.slice(start);
+    }
+    return [];
+  };
+});

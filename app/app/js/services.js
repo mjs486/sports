@@ -2,27 +2,52 @@
 
 /* Services */
 
-var sportsServices = angular.module('sportsServices', ['ngResource']);
+angular.module('sportsServices', ['ngResource'])
 
-sportsServices.factory('Sport', ['$resource',
+.factory('Sport', ['$resource',
   function($resource){
-    return $resource('localhost:8001/sports/api/sport/', {}, {
-      query: {method:'GET', params:{sportId:'sport'}, isArray:true}
+    return $resource('http://localhost:8001/sports/api/sport/', {}, {
+      query: {method:'GET',params:{}, isArray:true},
+      stripTrailingSlashes: false
+    });
+  }])
+
+.factory('SportsTeams', ['$resource',
+  function($resource){
+    return $resource('http://localhost:8001/sports/api/sportsteams/:id', {}, {
+      query: {method:'GET',params:{id:'@_id'}, isArray:true},
+      stripTrailingSlashes: false
+    });
+  }])
+
+.factory('Team', ['$resource',
+  function($resource){
+    return $resource('http://localhost:8001/sports/api/team/', {}, {
+      query: {method:'GET',params:{}, isArray:true},
+      stripTrailingSlashes: false
+    });
+  }])
+
+.factory('Team', ['$resource',
+  function($resource){
+    return $resource('http://localhost:8001/sports/api/team/:id', {}, {
+      query: {method:'GET',params:{id:'@_id'}, isArray:true},
+      stripTrailingSlashes: false
+    });
+  }])
+
+.factory('Athlete', ['$resource',
+  function($resource){
+    return $resource('http://localhost:8001/sports/api/athlete/:id', {}, {
+      query: {method:'GET', params:{id:'@_id'}, isArray:true},
+      stripTrailingSlashes: false
+    });
+  }])
+
+.factory('Headliners', ['$resource',
+  function($resource){
+    return $resource('http://localhost:8001/sports/api/headliners/', {}, {
+      query: {method:'GET',params:{}, isArray:true},
+      stripTrailingSlashes: false
     });
   }]);
-
-sportsServices.factory('Team', ['$resource',
-  function($resource){
-    return $resource('localhost:8001/sports/api/team/', {}, {
-      query: {method:'GET', params:{teamId:'team'}, isArray:true}
-    });
-  }]);
-
-
-sportsServices.factory('Athlete', ['$resource',
-  function($resource){
-    return $resource('localhost:8001/sports/api/athlete/', {}, {
-      query: {method:'GET', params:{athleteId:'athlete'}, isArray:true}
-    });
-  }]);
-

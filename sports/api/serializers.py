@@ -35,3 +35,9 @@ class SportSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Sport
 		fields = ('sport_id', 'name', 'abbr')
+
+class AthleteSportSerializer(serializers.ModelSerializer):
+	sport = serializers.PrimaryKeyRelatedField(read_only=True, source='team.sport.sport_id')
+	class Meta:
+		model = Athlete
+		fields = ('id', 'first_name', 'last_name', 'number', 'team', 'position', 'age', 'headline', 'injury', 'img','sport')

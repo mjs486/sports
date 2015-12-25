@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: django-cors
+Version: 0.1
+Summary: Django utilities for handling Cross-Origin Resource Sharing.
+Home-page: https://github.com/elevenbasetwo/django-cors
+Author: Eric Shull
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
