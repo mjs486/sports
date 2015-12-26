@@ -100,4 +100,9 @@ class HeadlineAthleteList(generics.ListCreateAPIView):
     def get_queryset(self):
         
         sport = self.request.query_params.get('sport')
-        return Athlete.objects.exclude(headline='').filter(team__sport__sport_id=sport)
+        print(sport)
+        athletes = Athlete.objects.exclude(headline='')
+        if sport:
+            return athletes.filter(team__sport__sport_id=sport)
+        else:
+            return athletes

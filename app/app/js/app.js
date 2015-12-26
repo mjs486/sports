@@ -18,6 +18,7 @@ sportsApp.config(['$routeProvider','$httpProvider','$resourceProvider',
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
     $resourceProvider.defaults.stripTrailingSlashes = false;
+    $httpProvider.defaults.cache = true;
 
     $routeProvider.
       when('/sport/', {

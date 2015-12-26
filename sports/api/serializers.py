@@ -19,7 +19,7 @@ class TeamSerializer(serializers.ModelSerializer):
 		fields = ('id', 'city', 'name', 'logo', 'league', 'abbr', 'sport')
 
 class TeamAndAthleteSerializer(serializers.ModelSerializer):
-	athletes = AthleteBasicSerializer(many=True)
+	athletes = AthleteSerializer(many=True)
 	class Meta:
 		model = Team
 		fields = ('id', 'city', 'name', 'logo', 'league', 'abbr', 'sport', 'athletes')
