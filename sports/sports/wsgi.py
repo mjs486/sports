@@ -11,6 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sports.settings")
 import django.core.handlers.wsgi
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sports.settings")
+
 application = django.core.handlers.wsgi.WSGIHandler()
