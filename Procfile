@@ -1,1 +1,1 @@
-web: gunicorn sports.sports.wsgi --log-file -
+web: gunicorn sports.wsgi:application --log-file -
