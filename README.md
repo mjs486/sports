@@ -1,1 +1,1 @@
-# thuzio-app
+# sports-app
