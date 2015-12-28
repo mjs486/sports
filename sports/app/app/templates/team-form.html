@@ -1,9 +1,0 @@
-<form novalidate ng-controller='TeamFormCtrl'>
-    <h1>{{Team.city}} {{team.name}}</h1>
-    <formly-form model="team" fields="teamFormFields" form="teamForm">
-        <button type="submit" class="btn btn-primary" ng-disabled="teamForm.$invalid" ng-click="submit(team)">Submit</button>
-        <button type="submit" class="btn" ng-disabled="teamForm.$invalid" ng-click="cancel(team)">Cancel</button>
-        <button type="submit" class="btn btn-danger" ng-click="delete(team)">Delete</button>
-
-    </formly-form>
-</form>

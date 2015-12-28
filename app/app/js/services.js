@@ -6,7 +6,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('Sport', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/sport/', {}, {
+    return $resource('/sports/api/sport/', {}, {
       query: {method:'GET',params:{}, isArray:true},
       post: {method:'POST'},
       update: {method:'PUT', params: {id: '@id'}},
@@ -17,7 +17,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('SportsTeams', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/sportsteams/:id/', {}, {
+    return $resource('/sports/api/sportsteams/:id/', {}, {
       query: {method:'GET',params:{id:'@id'}, isArray:false},
       post: {method:'POST'},
       update: {method:'PUT', params: {id: '@id'}},
@@ -28,7 +28,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('Team', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/team/', {}, {
+    return $resource('/sports/api/team/', {}, {
       query: {method:'GET',params:{}, isArray:true},
       stripTrailingSlashes: false
     });
@@ -36,7 +36,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('Team', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/team/:id/', {}, {
+    return $resource('/sports/api/team/:id/', {}, {
       query: {method:'GET',params:{id:'@id'}, isArray:true},
       post: {method:'POST'},
       update: {method:'PUT', params: {id: '@id'}},
@@ -47,7 +47,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('Athlete', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/athlete/:id/', {}, {
+    return $resource('/sports/api/athlete/:id/', {}, {
       query: {method:'GET', params:{id:'@id'}, isArray:true},
       post: {method:'POST'},
       update: {method:'PUT', params: {id: '@id'}},
@@ -58,7 +58,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('NewAthlete', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/newathlete/', {}, {
+    return $resource('/sports/api/newathlete/', {}, {
       post: {method:'POST'},
 
       stripTrailingSlashes: false
@@ -67,7 +67,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('Athletes', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/athlete/?sport=:sportId', {}, {
+    return $resource('/sports/api/athlete/?sport=:sportId', {}, {
       query: {method:'GET', params:{sportId:'@_sportId'}, isArray:true},
       stripTrailingSlashes: false
     });
@@ -76,7 +76,7 @@ angular.module('sportsServices', ['ngResource'])
 
 .factory('Headliners', ['$resource',
   function($resource){
-    return $resource('http://192.168.1.15:8001/sports/api/headliners/', {}, {
+    return $resource('/sports/api/headliners/', {}, {
       query: {method:'GET',params:{}, isArray:true},
       stripTrailingSlashes: false
     });

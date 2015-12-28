@@ -1,9 +1,0 @@
-<form novalidate ng-controller='AthleteFormCtrl'>
-    <h1>{{athlete.first_name}} {{athlete.last_name}}</h1>
-    <formly-form model="athlete" fields="athleteFormFields" form="athleteForm">
-        <button type="submit" class="btn btn-primary" ng-disabled="athleteForm.$invalid" ng-click="submit(athlete)">Submit</button>
-        <button type="submit" class="btn" ng-disabled="athleteForm.$invalid" ng-click="cancel(athlete)">Cancel</button>
-        <button type="submit" class="btn btn-danger" ng-click="delete(athlete)">Delete</button>
-
-    </formly-form>
-</form>
