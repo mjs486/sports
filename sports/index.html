@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="sportsApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>My AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="app/bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app/app/css/app.css">
+  <script src="app/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="app/bower_components/angular/angular.js"></script>
+  <script src="app/bower_components/angular-route/angular-route.js"></script>
+  <script src="app/app/bower_components/angular-resource/angular-resource.js"></script>
+  <script src='app/bower_components/angular-loader/angular-loader.js'></script>
+  <script src='app/bower_components/angular-cookies/angular-cookies.js'></script>
+  <script src="app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="app/app/js/app.js"></script>
+  <script src="app/app/js/controllers/main-controller.js"></script>
+  <script src="app/app/js/controllers/list-controllers.js"></script>
+  <script src="app/app/js/controllers/detail-controllers.js"></script>
+  <script src="app/app/js/controllers/sports-table-controller.js"></script>
+  <script src="app/app/js/controllers/teams-table-controller.js"></script>
+  <script src="app/app/js/controllers/athletes-table-controller.js"></script>
+  <script src="app/app/js/controllers/athlete-form-controller.js"></script>
+  <script src="app/app/js/controllers/team-form-controller.js"></script>
+  <script src="app/app/js/controllers/sport-form-controller.js"></script>
+  <script src="app/app/js/controllers/new-athlete-form-controller.js"></script>
+  <script src="app/app/js/controllers/new-team-form-controller.js"></script>
+  <script src="app/app/js/controllers/new-sport-form-controller.js"></script>
+  <script src="app/app/js/controllers/header-controller.js"></script>
+  <script src="app/app/js/controllers/footer-controller.js"></script>
+  <script src="app/app/js/controllers/404-controller.js"></script>
+  <script src="app/app/js/filters.js"></script>
+  <script src="app/app/js/services.js"></script>
+  <script src="app/app/components/version/version.js"></script>
+  <script src="app/app/components/version/version-directive.js"></script>
+  <script src="app/app/components/version/interpolate-filter.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="app/node_modules/js-cookie/src/js.cookie.js"></script>
+  <script src="app/node_modules/api-check/dist/api-check.js"></script>
+  <script src="app/node_modules/angular-formly/dist/formly.js"></script>
+  <script src="app/node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div ng-controller"HeaderCtrl">
+  <div ng-include src="'templates/header.html'"/>
+  </div>
+  <div class="container">
+  <div ng-view></div>
+  </div>
+  <div ng-include src="'templates/footer.html'"/>
+
+  <!-- <div>Angular seed app: v<span app-version></span></div> -->
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+
+</body>
+</html>

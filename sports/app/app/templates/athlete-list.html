@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div ng-controller="AthletesTableCtrl">
+    <div class="row-fluid">
+      <h2>Athletes</h2>
+    </div>
+    <div class="row-fluid">
+      <div class="col-md-4">
+        <div class="row-fluid">
+          Search: <input type="text" ng-model="athletesTable.search.$" placeholder="Search" ng-change="athletesTable.updateSearch()" />
+        </div>
+        <div class="row-fluid">
+          <br/>
+          Sort by:  <select ng-model="orderProp" ng-change="athletesTable.updateSort(orderProp)">
+          <option value="first_name">Name</option>
+          <option value="team.city">Team</option>
+          <option value="team.sport">Sport</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-primary" ng-click="addPlayer()">Add Player</button>
+      </div>
+      <div class="col-md-6">
+        <uib-pagination total-items="athletesTable.totalItems" ng-model="athletesTable.currentPage" max-size="athletesTable.maxSize" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="athletesTable.numPages" items-per-page="athletesTable.itemsPerPage"></uib-pagination>
+    </div>
+    <div class="row-fluid">
+      <table class="table table-striped table-bordered table-responsive table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Team</th>
+            <th>Position</th>
+            <th>Headline</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="athlete in (athletesTable.filtered = athletes | filter:athletesTable.search | startFrom:(athletesTable.currentPage-1)*athletesTable.itemsPerPage | limitTo:athletesTable.itemsPerPage) | orderBy:orderProp" ng-click="athletesTable.setSelected(athlete)" class="table-row">
+            <td>{{ athlete.first_name + ' ' + athlete.last_name}}</td>
+            <td>{{ athlete.team.city + ' ' + athlete.team.name }}</td>
+            <td>{{ athlete.position }}</td>
+            <td>{{ athlete.headline }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row-fluid">
+       <uib-pagination total-items="athletesTable.totalItems" ng-model="athletesTable.currentPage" max-size="athletesTable.maxSize" class="pagination-sm pull-right" boundary-links="true" rotate="false" num-pages="athletesTable.numPages" items-per-page="athletesTable.itemsPerPage"></uib-pagination>
+    </div>
+  </div>
+</div>
