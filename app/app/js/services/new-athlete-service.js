@@ -1,5 +1,5 @@
+// POST only to add new Athlete to work around model
 angular.module('sportsServices')
-
 
 .factory('NewAthlete', ['$resource',
   function($resource){

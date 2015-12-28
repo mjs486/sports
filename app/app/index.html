@@ -20,12 +20,19 @@
   <script src='bower_components/angular-loader/angular-loader.js'></script>
   <script src='../bower_components/angular-cookies/angular-cookies.js'></script>
   <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+  <!-- App module -->
   <script src="js/app.js"></script>
 
   <!-- Controllers -->
   <script src="js/controllers/main-controller.js"></script>
-  <script src="js/controllers/list-controllers.js"></script>
-  <script src="js/controllers/detail-controllers.js"></script>
+  <script src="js/controllers/athlete-list-controller.js"></script>
+  <script src="js/controllers/headline-athlete-list-controller.js"></script>
+  <script src="js/controllers/sport-list-controller.js"></script>
+  <script src="js/controllers/team-list-controller.js"></script>
+  <script src="js/controllers/athlete-detail-controller.js"></script>
+  <script src="js/controllers/team-detail-controller.js"></script>
+  <script src="js/controllers/sport-detail-controller.js"></script>
   <script src="js/controllers/sports-table-controller.js"></script>
   <script src="js/controllers/teams-table-controller.js"></script>
   <script src="js/controllers/athletes-table-controller.js"></script>
@@ -41,6 +48,7 @@
 
   <!-- Filters -->
   <script src="js/filters.js"></script>
+
   <!-- Serivices -->
   <script src="js/services/athlete-service.js"></script>
   <script src="js/services/new-athlete-service.js"></script>
@@ -69,12 +77,17 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+  <!-- Header -->
   <div ng-controller"HeaderCtrl">
   <div ng-include src="'templates/header.html'"/>
   </div>
+
+  <!-- Main Angular App -->
   <div class="container">
   <div ng-view></div>
   </div>
+
+  <!-- Footer -->
   <div ng-include src="'templates/footer.html'"/>
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->

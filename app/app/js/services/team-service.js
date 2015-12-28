@@ -1,3 +1,4 @@
+// GET POST PUT DELETE Teams
 angular.module('sportsServices')
 
 .factory('Team', ['$resource',

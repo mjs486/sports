@@ -1,3 +1,5 @@
+// GET Athlete List
+// No POST because backend API doesnt allow it for this model
 angular.module('sportsServices')
 
 .factory('Athletes', ['$resource',

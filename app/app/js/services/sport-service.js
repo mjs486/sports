@@ -1,3 +1,5 @@
+// GET Sport list
+// POST new sport
 angular.module('sportsServices')
 
 .factory('Sport', ['$resource',

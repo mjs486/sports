@@ -1,3 +1,5 @@
+// GET PUT DELET individual sport instances
+
 angular.module('sportsServices')
 
 .factory('SportsTeams', ['$resource',

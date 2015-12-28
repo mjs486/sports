@@ -2,30 +2,25 @@ angular.module('sportsControllers')
 
 .controller('AthleteFormCtrl',['$scope', '$routeParams', 'Team', 'Athlete',
 	function($scope, $routeParams, Team, Athlete){
-		// Team.query().$promise
-		// .then(function(res){
-		// 	$scope.teams = []
-		// 	for (i = 0; i < res.length; i++){
-		// 		$scope.teams.push({'name' : (res[i].city + ' ' + res[i].name),
-		// 							'value' : res[i].id})
-		// 	}
-		// 	return $scope.teams
-		// });
 		$scope.athlete = Athlete.get({id: $routeParams.athleteId});
 		$scope.teams = Team.query();
 		$scope.notNew = true;
 		$scope.get_team = function(){
+			// When athlete get request returns...
 			$scope.athlete.$promise.then(function(a){
+				// When teams get requets returns..
 				$scope.teams.$promise.then(function(t){
-					console.log($scope)
+
+					// Generate team options for Form Select
 					var teamOptions = []
 					for (i =0; i < t.length; i++){
 						teamOptions.push({name : t[i].city + '  ' + t[i].name,
 											value : t[i].id});
 					}
-					console.log(a)
+					// pre-fill form with athlete
 					$scope.athleteForm = a;
 
+					// define form fields to show
 					$scope.athleteFormFields = [
 				        {
 				            key: 'first_name',
@@ -120,17 +115,18 @@ angular.module('sportsControllers')
 				            }
 				        },
 			    	];
-			    });
+			    }); // exit team request callback
 				
-			},function(error,status){
+			},
+			// athlete request error callback
+			function(error,status){
 				window.location.href= '#/notfound/'
-			});
+
+			}); //exit athlete request callback
 		};
 
 		$scope.get_team();
-		if ($scope.athlete === undefined){
-			window.location.href= '#/notfound/'
-		}
+		
 		$scope.submit = function(athlete){
 			athlete.$update(athlete.id);
 			window.location.href = '#/athlete/' + athlete.id + '/';
