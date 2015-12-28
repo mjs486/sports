@@ -10,8 +10,7 @@ angular.module('sportsControllers')
     $scope.teams =Team.query();
     $scope.orderProp = 'name';
   }])
-.controller('AthleteListCtrl', ['$scope', 'Athlete',
-  function($scope, Athlete) {
-    $scope.athletes = Athlete.query();
-    $scope.orderProp = 'name';
+.controller('AthleteListCtrl', ['$scope', 'Athletes', '$routeParams',
+  function($scope, Athletes, $routeParams){
+    $scope.athletes = Athletes.query({sportId:$routeParams.sport});
   }]);

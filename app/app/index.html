@@ -27,6 +27,14 @@
   <script src="js/controllers/teams-table-controller.js"></script>
   <script src="js/controllers/athletes-table-controller.js"></script>
   <script src="js/controllers/athlete-form-controller.js"></script>
+  <script src="js/controllers/team-form-controller.js"></script>
+  <script src="js/controllers/sport-form-controller.js"></script>
+  <script src="js/controllers/new-athlete-form-controller.js"></script>
+  <script src="js/controllers/new-team-form-controller.js"></script>
+  <script src="js/controllers/new-sport-form-controller.js"></script>
+  <script src="js/controllers/header-controller.js"></script>
+  <script src="js/controllers/footer-controller.js"></script>
+  <script src="js/controllers/404-controller.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/services.js"></script>
   <script src="components/version/version.js"></script>
@@ -37,6 +45,7 @@
   <script src="../node_modules/api-check/dist/api-check.js"></script>
   <script src="../node_modules/angular-formly/dist/formly.js"></script>
   <script src="../node_modules/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -47,8 +56,13 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-
+  <div ng-controller"HeaderCtrl">
+  <div ng-include src="'templates/header.html'"/>
+  </div>
+  <div class="container">
   <div ng-view></div>
+  </div>
+  <div ng-include src="'templates/footer.html'"/>
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 

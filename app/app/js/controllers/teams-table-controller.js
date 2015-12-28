@@ -4,6 +4,8 @@ angular.module('sportsControllers')
 
 .controller('TeamsTableCtrl',['$scope','filterFilter',
 	function($scope,filterFilter){
+
+		$scope.orderProp='city'
 		//Sports Table Variables
     	$scope.teamsTable = {};
 
@@ -50,9 +52,35 @@ angular.module('sportsControllers')
 	        $scope.teamsTable.totalItems = $scope.teamsTable.filtered.length; 
 	        $scope.teamsTable.numPages=Math.ceil($scope.teamsTable.totalItems/$scope.teamsTable.viewby);
 	    };
+	    $scope.teamsTable.updateSort = function (val) {
+		    $scope.teamsTable.filtered = $scope.teamsTable.filtered.sort(function(a,b){
+		    	var a1 = a;
+		    	var b1 = b;
+		    	for (i=0;i<val.split('.').length; i++){
+				    a1 = a1[val.split('.')[i]];
+				    b1 = b1[val.split('.')[i]];
+
+				}
+		    	if(a1 === ''+parseInt(a1) && b1 === ''+parseInt(b1)){
+		    		return parseInt(a1)-parseInt(b1);
+		    	}
+		    	if (a1 > b1){
+		    		return 1;
+		    	}
+		    	if (a1 == b1){
+		    		return 0;
+		    	}
+		    	if (a1 < b1){
+		    		return -1;
+		    	}
+		    })
+	    };
 	    $scope.teamsTable.resetFilters = function () {
 	      // needs to be a function or it won't trigger a $watch
 	      $scope.teamsTable.search = {};
+	    };
+	    $scope.addTeam = function(){
+	    	window.location.href="#/team/new"
 	    };
 	}
 ]);

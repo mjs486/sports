@@ -31,3 +31,20 @@
 .table-row:hover{
   cursor:pointer;
 }
+.dropdown{
+  cursor: pointer;
+}
+
+body { padding-top: 70px;
+        padding-bottom: 70px}
+
+.thumb {
+  float: left;
+  margin: -0.5em 1em 1.5em 0;
+  padding-bottom: 1em;
+  height: 170px;
+  width: 170px;
+}
+.athlete-container{
+  dipslay : inline-block;
+}

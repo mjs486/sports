@@ -106,3 +106,16 @@ class HeadlineAthleteList(generics.ListCreateAPIView):
             return athletes.filter(team__sport__sport_id=sport)
         else:
             return athletes
+class DeepAthleteList(generics.ListCreateAPIView):
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = AthleteSportSerializer
+    
+    def get_queryset(self):
+        athletes = Athlete.objects.all()
+        sport = self.request.query_params.get('sport')
+        if sport:
+            return athletes.filter(team__sport__sport_id=sport)
+        else:
+            return athletes

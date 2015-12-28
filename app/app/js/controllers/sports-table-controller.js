@@ -45,4 +45,7 @@ angular.module('sportsControllers')
 	      // needs to be a function or it won't trigger a $watch
 	      $scope.sportsTable.search = {};
 	    };
+	    $scope.addSport = function(){
+	    	window.location.href="#/sport/new"
+	    };
 	}]);
