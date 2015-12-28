@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
     'api',
+    'gunicorn',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
