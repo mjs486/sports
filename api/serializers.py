@@ -6,12 +6,6 @@ class AthleteSerializer(serializers.ModelSerializer):
 		model = Athlete
 		fields = ('id', 'first_name', 'last_name', 'number', 'team', 'position', 'age', 'headline', 'injury', 'img')
 
-class AthleteBasicSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Athlete
-        fields = ('id', 'first_name', 'last_name', 'number', 'team', 'position')
-        
-
 class TeamSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Team
@@ -38,7 +32,8 @@ class SportSerializer(serializers.ModelSerializer):
 
 class AthleteSportSerializer(serializers.ModelSerializer):
 	sport = serializers.PrimaryKeyRelatedField(read_only=True, source='team.sport.sport_id')
+	team_id = serializers.PrimaryKeyRelatedField(queryset=Team.objects.all())
 	class Meta:
 		model = Athlete
-		fields = ('id', 'first_name', 'last_name', 'number', 'team', 'position', 'age', 'headline', 'injury', 'img','sport')
+		fields = ('id', 'first_name', 'last_name', 'number', 'team_id','team', 'position', 'age', 'headline', 'injury', 'img','sport')
 		depth=1

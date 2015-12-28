@@ -44,7 +44,7 @@ angular.module('sportsControllers')
 	    ];
 	    $scope.submit = function(sport){
 			sport.$post(sport.sport_id);
-			window.location.href = '#/sport/' + sport.sport_id + '/';
+			window.location.href = '#/sport/';
 		}
 		$scope.cancel = function(team){
 			window.location.href = '#/sport/';

@@ -53,6 +53,10 @@ sportsApp.config(['$routeProvider','$httpProvider','$resourceProvider',
         templateUrl: 'templates/team-form.html',
         controller: 'TeamFormCtrl'
       }).
+       when('/headlines/', {
+        templateUrl: 'templates/athlete-list.html',
+        controller: 'HeadlineAthleteListCtrl'
+      }).
       when('/athlete/', {
         templateUrl: 'templates/athlete-list.html',
         controller: 'AthleteListCtrl'

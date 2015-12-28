@@ -4,8 +4,8 @@
 
 angular.module('sportsControllers')
 
-.controller('SportDetailCtrl', ['$scope', '$routeParams', 'SportsTeams', 'Headliners',
-  function($scope, $routeParams, SportsTeams,Headliners) {
+.controller('SportDetailCtrl', ['$scope', '$routeParams', 'SportsTeams',
+  function($scope, $routeParams, SportsTeams) {
     $scope.sport = SportsTeams.get({id: $routeParams.sportId})
 
     $scope.sport.$promise.then(function(sport){
@@ -16,7 +16,7 @@ angular.module('sportsControllers')
     },function(error, status){
        window.location.href= '#/notfound/'
     });
-    $scope.athletes = Headliners.query(({sport:$routeParams.sportId}));
+    // $scope.athletes = Headliners.query(({sport:$routeParams.sportId}));
     
   }])
 

@@ -1,7 +1,7 @@
 angular.module('sportsControllers')
 
-.controller('NewAthleteFormCtrl',['$scope', '$routeParams', 'Team','NewAthlete',
-	function($scope, $routeParams, Team, NewAthlete){
+.controller('NewAthleteFormCtrl',['$scope', '$routeParams', 'Team','Athlete',
+	function($scope, $routeParams, Team, Athlete){
 		// Team.query().$promise
 		// .then(function(res){
 		// 	$scope.teams = []
@@ -12,7 +12,7 @@ angular.module('sportsControllers')
 		// 	return $scope.teams
 		// });
 		$scope.newAthlete = function(){
-			athlete = new NewAthlete();
+			athlete = new Athlete();
 			athlete.first_name = '';
 			athlete.last_name = '';
 			athlete.team = '';
@@ -32,7 +32,7 @@ angular.module('sportsControllers')
 				var teamOptions = []
 				for (i =0; i < t.length; i++){
 					teamOptions.push({name : t[i].city + '  ' + t[i].name,
-										value : t[i].id});
+										value : t[i]});
 				}
 				$scope.athleteForm = $scope.athlete;
 
@@ -135,7 +135,7 @@ angular.module('sportsControllers')
 		
 		$scope.submit = function(athlete){
 			athlete.$post(athlete.id);
-			window.location.href = '#/team/' + athlete.team + '/';
+			window.location.href = '#/team/' + athlete.team.id + '/';
 		}
 		$scope.cancel = function(){
 			window.location.href = '#';
