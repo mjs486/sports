@@ -2,6 +2,7 @@ angular.module('sportsControllers')
 
 .controller('NewAthleteFormCtrl',['$scope', '$routeParams', 'Team','NewAthlete',
 	function($scope, $routeParams, Team, NewAthlete){
+		// new athlete instance to be saved
 		$scope.newAthlete = function(){
 			athlete = new NewAthlete();
 			athlete.first_name = '';
@@ -18,13 +19,15 @@ angular.module('sportsControllers')
 		$scope.teams = Team.query()
 		$scope.notNew = false;
 		$scope.get_team = function(){
+			// on team request success callback
 			$scope.teams.$promise.then(function(t){
-				console.log($scope)
+				// generate team options for form select
 				var teamOptions = []
 				for (i =0; i < t.length; i++){
 					teamOptions.push({name : t[i].city + '  ' + t[i].name,
 										value : t[i].id});
 				}
+
 				$scope.athleteForm = $scope.athlete;
 
 				$scope.athleteFormFields = [

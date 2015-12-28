@@ -5,25 +5,28 @@ angular.module('sportsControllers')
 .controller('TeamsTableCtrl',['$scope','filterFilter',
 	function($scope,filterFilter){
 
+		// inital ordering
 		$scope.orderProp='city'
+
+
 		//Sports Table Variables
     	$scope.teamsTable = {};
-
     	$scope.teamsTable.search = {};
-
-    	//Pagination Variables
     	$scope.teamsTable.viewby = 10;
     	$scope.teamsTable.currentPage = 1;
 	    $scope.teamsTable.itemsPerPage = $scope.teamsTable.viewby;
 	    $scope.teamsTable.maxSize = 5;
 
+	    // if teams in scope are in an array
 	    if ($scope.teams != undefined){
 	      $scope.teams.$promise.then(
 	      function(t){
 	        $scope.teamsTable.totalItems = t.length; 
 	        $scope.teamsTable.numPages=Math.ceil($scope.teamsTable.totalItems/$scope.teamsTable.viewby);
 	      });
-	    } else if ($scope.sport != undefined){
+	    } 
+	    // if teams in scope are nested in a sport object
+	    else if ($scope.sport != undefined){
 	      $scope.sport.$promise.then(
 	      	function(s){
 	        $scope.teamsTable.totalItems = s.teams.length; 
@@ -54,6 +57,7 @@ angular.module('sportsControllers')
 	    };
 	    $scope.teamsTable.updateSort = function (val) {
 		    $scope.teamsTable.filtered = $scope.teamsTable.filtered.sort(function(a,b){
+		    	//allow for nested object reference such as "sport.team.name"
 		    	var a1 = a;
 		    	var b1 = b;
 		    	for (i=0;i<val.split('.').length; i++){
