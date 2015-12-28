@@ -1,18 +1,9 @@
 angular.module('sportsControllers')
 
-.controller('NewAthleteFormCtrl',['$scope', '$routeParams', 'Team','Athlete',
-	function($scope, $routeParams, Team, Athlete){
-		// Team.query().$promise
-		// .then(function(res){
-		// 	$scope.teams = []
-		// 	for (i = 0; i < res.length; i++){
-		// 		$scope.teams.push({'name' : (res[i].city + ' ' + res[i].name),
-		// 							'value' : res[i].id})
-		// 	}
-		// 	return $scope.teams
-		// });
+.controller('NewAthleteFormCtrl',['$scope', '$routeParams', 'Team','NewAthlete',
+	function($scope, $routeParams, Team, NewAthlete){
 		$scope.newAthlete = function(){
-			athlete = new Athlete();
+			athlete = new NewAthlete();
 			athlete.first_name = '';
 			athlete.last_name = '';
 			athlete.team = '';
@@ -32,7 +23,7 @@ angular.module('sportsControllers')
 				var teamOptions = []
 				for (i =0; i < t.length; i++){
 					teamOptions.push({name : t[i].city + '  ' + t[i].name,
-										value : t[i]});
+										value : t[i].id});
 				}
 				$scope.athleteForm = $scope.athlete;
 
@@ -135,7 +126,7 @@ angular.module('sportsControllers')
 		
 		$scope.submit = function(athlete){
 			athlete.$post(athlete.id);
-			window.location.href = '#/team/' + athlete.team.id + '/';
+			window.location.href = '#/team/' + athlete.team + '/';
 		}
 		$scope.cancel = function(){
 			window.location.href = '#';

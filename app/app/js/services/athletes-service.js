@@ -1,9 +1,9 @@
 angular.module('sportsServices')
 
-.factory('Athletes', ['$resource',
+.factory('NewAthlete', ['$resource',
   function($resource){
-    return $resource('/sports/api/athlete/?sport=:sportId&headline=:headline', {}, {
-      query: {method:'GET', params:{sportId:'@sportId',headline : '@headline'}, isArray:true},
+    return $resource('/sports/api/newathlete/', {}, {   
+      post: {method:'POST'},
       stripTrailingSlashes: false
     });
-  }])
+}])

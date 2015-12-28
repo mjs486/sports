@@ -10,6 +10,13 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
         permissions.AllowAny
     ]
 
+class AthleteList(generics.ListCreateAPIView):
+    queryset = Athlete.objects.all()
+    serializer_class = AthleteSerializer
+    permission_classes = [
+        permissions.AllowAny
+    ]
+
 class TeamList(generics.ListCreateAPIView):
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
@@ -52,21 +59,6 @@ class AthleteDetail(generics.RetrieveUpdateDestroyAPIView):
     ]
     serializer_class = AthleteSerializer
 
-class HeadlineAthleteList(generics.ListCreateAPIView):
-    permission_classes = [
-        permissions.AllowAny
-    ]
-    serializer_class = AthleteSportSerializer
-    
-    def get_queryset(self):
-        
-        sport = self.request.query_params.get('sport')
-        print(sport)
-        athletes = Athlete.objects.exclude(headline='')
-        if sport:
-            return athletes.filter(team__sport__sport_id=sport)
-        else:
-            return athletes
 class DeepAthleteList(generics.ListCreateAPIView):
     permission_classes = [
         permissions.AllowAny
